@@ -2,6 +2,7 @@ let yourScore = 0;
 let computerScore = 0;
 let rounds = 5;
 
+// randomly generates computer choice
 function computerPlay() {
     let options = ["rock", "paper", "scissors"];
     let randomOption = options[Math.floor(Math.random() * options.length)];
@@ -10,6 +11,7 @@ function computerPlay() {
 
 }
 
+// states who wins after 5 rounds
 function countScore() {
 
     if (yourScore > computerScore) {
@@ -21,6 +23,7 @@ function countScore() {
     }
 }
 
+// plays game 5 times
 function game() {
     for (let i = 0; i < rounds; i++) {
         playRound(computerPlay(), "");
@@ -28,6 +31,7 @@ function game() {
 
 }
 
+// game logic 
 function playRound(computerSelection, playerSelection) {
 
     let playerChoice = prompt("Choose Rock, Paper or Scissors", playerSelection.toLowerCase());
@@ -52,6 +56,7 @@ function playRound(computerSelection, playerSelection) {
 
 }
 
+// plays game
 game();
 countScore();
 

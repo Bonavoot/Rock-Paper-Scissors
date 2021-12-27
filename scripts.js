@@ -31,26 +31,41 @@ function computerPlay() {
 
 } */
 
+function winner() {
+
+	if (yourScore == 5) {
+		alert("You win!");
+
+	}
+	else if (computerScore == 5) {
+		alert("You lose!")
+	}
+
+}
+
 // game logic 
 function playRound(computerSelection, playerSelection) {
 
 
 
 	if (computerSelection == playerSelection) {
-		yourScore++
-		computerScore++;
+
+
 		results.textContent = `Draw! ${computerSelection} ties with ${playerSelection}!`;
 
 	}
 	else if (computerSelection == "rock" && playerSelection == "scissors" || computerSelection == "paper" && playerSelection == "rock" || computerSelection == "scissors" && playerSelection == "paper") {
 		computerScore++;
+		scoreKeeper.textContent = 'You: ' + yourScore + ' Computer: ' + computerScore;
 		results.textContent = `Computer wins! ${computerSelection} beats ${playerSelection}!`;
 	}
 	else if (playerSelection == "rock" && computerSelection == "scissors" || playerSelection == "paper" && computerSelection == "rock" || playerSelection == "scissors" && computerSelection == "paper") {
 		yourScore++;
+		scoreKeeper.textContent = 'You: ' + yourScore + ' Computer: ' + computerScore;
 		results.textContent = `You win! ${playerSelection} beats ${computerSelection}!`;
 	}
 	else {
+		scoreKeeper.textContent = 'You: ' + yourScore + ' Computer: ' + computerScore;
 		results.textContent = "Error!";
 	}
 
@@ -75,16 +90,29 @@ scissors.classList.add("scissors");
 scissors.textContent = "SCISSORS";
 container.appendChild(scissors);
 
-rock.addEventListener('click', () => playRound(computerPlay(), "rock"));
-paper.addEventListener('click', () => playRound(computerPlay(), "paper"));
-scissors.addEventListener('click', () => playRound(computerPlay(), "scissors"));
+rock.addEventListener('click', () => {
+	playRound(computerPlay(), "rock")
+	winner();
+});
+
+paper.addEventListener('click', () => {
+	playRound(computerPlay(), "paper")
+	winner();
+});
+
+
+scissors.addEventListener('click', () => {
+	playRound(computerPlay(), "scissors")
+	winner();
+});
+
+
 
 const results = document.createElement('div');
 container.appendChild(results);
 
-
-
-
+const scoreKeeper = document.createElement('div');
+container.appendChild(scoreKeeper);
 
 
 // plays game

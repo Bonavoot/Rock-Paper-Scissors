@@ -34,11 +34,11 @@ function computerPlay() {
 function winner() {
 
 	if (yourScore == 5) {
-		alert("You win!");
+		winnerDeclaration.textContent = "You Win!";
 
 	}
 	else if (computerScore == 5) {
-		alert("You lose!")
+		winnerDeclaration.textContent = "You lose!";
 	}
 
 }
@@ -114,6 +114,8 @@ container.appendChild(results);
 const scoreKeeper = document.createElement('div');
 container.appendChild(scoreKeeper);
 
+const winnerDeclaration = document.createElement('div');
+container.appendChild(winnerDeclaration)
 
 // plays game
 //game();
